@@ -1,0 +1,24 @@
+.upload-card {
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px 0;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.message {
+  margin: 0;
+}

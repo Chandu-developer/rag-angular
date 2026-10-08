@@ -1,0 +1,79 @@
+<mat-card class="upload-card">
+
+  <mat-card-header>
+    <mat-card-title>
+      Upload PDF
+    </mat-card-title>
+
+    <mat-card-subtitle>
+      Upload a document for RAG processing
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <div class="upload-container">
+
+      <input
+        #fileInput
+        type="file"
+        accept=".pdf,application/pdf"
+        hidden
+        (change)="onFileSelected($event)"
+      />
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        (click)="fileInput.click()">
+
+        <mat-icon>upload_file</mat-icon>
+
+        Select PDF
+      </button>
+
+      @if (selectedFile) {
+
+        <div class="file-info">
+
+          <mat-icon>picture_as_pdf</mat-icon>
+
+          <span>
+            {{ selectedFile.name }}
+          </span>
+
+        </div>
+
+        <button
+          mat-raised-button
+          color="accent"
+          [disabled]="uploading"
+          (click)="upload()">
+
+          Upload
+
+        </button>
+      }
+
+      @if (uploading) {
+
+        <mat-progress-bar
+          mode="indeterminate">
+        </mat-progress-bar>
+
+      }
+
+      @if (message) {
+
+        <p class="message">
+          {{ message }}
+        </p>
+
+      }
+
+    </div>
+
+  </mat-card-content>
+
+</mat-card>
