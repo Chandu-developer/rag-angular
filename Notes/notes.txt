@@ -1,0 +1,58 @@
+                         ┌──────────────────────┐
+                         │      PDF Storage     │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                              PDF extraction
+                                    │
+                                    ▼
+                                Chunking
+                                    │
+                                    ▼
+                              Embeddings
+                                    │
+                                    ▼
+                              Vector DB
+                                    │
+                                    │
+Angular ── Question ──> .NET API ──┘
+                           │
+                           ▼
+                     Vector Search
+                           │
+                           ▼
+                    Relevant chunks
+                           │
+                           ▼
+                         LLM
+                           │
+                           ▼
+                        Answer
+                           │
+                           ▼
+                        Angular
+
+
+What happens when angular sends .pdf file into backend:
+Angular
+   │
+   │ POST /api/documents/upload
+   ▼
+.NET API
+   │
+   ├── Validate PDF
+   │
+   ├── Generate GUID
+   │
+   ├── Save PDF
+   │
+   │   Documents/
+   │      └── 6f3e...pdf
+   │
+   └── Insert metadata
+       into SQL Server
+
+
+Why chunks? Embedding an entire large PDF as one piece makes it harder to retrieve only the relevant information. Smaller, overlapping chunks give us 
+useful units to search later
+
