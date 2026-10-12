@@ -1,0 +1,40 @@
+<div class="rag-container">
+  <h2>Ask Your Documents</h2>
+
+  <mat-form-field appearance="outline" class="question-field">
+    <mat-label>Enter your question</mat-label>
+
+    <input
+      matInput
+      [(ngModel)]="question"
+      (keyup.enter)="sendQuestion()"
+      placeholder="e.g. What is our password policy?"
+    />
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="!question.trim() || loading"
+    (click)="sendQuestion()">
+    {{ loading ? 'Searching...' : 'Ask AI' }}
+  </button>
+
+  <div *ngIf="answer">
+    <h3>Answer</h3>
+    <p>{{ answer }}</p>
+
+    <h3>Sources</h3>
+    <div *ngFor="let source of sources">
+      <p>
+        Document ID: {{ source.documentId }},
+        Page: {{ source.pageNumber }}
+      </p>
+      <p>{{ source.chunkText }}</p>
+    </div>
+  </div>
+
+  <p *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </p>
+</div>

@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DocumentService } from '../../../services/document.service.ts.service';
+import { Router } from '@angular/router';
 
 
 
@@ -22,6 +23,7 @@ import { DocumentService } from '../../../services/document.service.ts.service';
 export class DocumentUploadComponent {
 
   private documentService = inject(DocumentService);
+  private router = inject(Router);
 
   selectedFile: File | null = null;
 
@@ -80,5 +82,9 @@ export class DocumentUploadComponent {
           this.uploading = false;
         }
       });
+  }
+
+  openRagChat() {
+    this.router.navigate(['/ragchat']);
   }
 }

@@ -1,0 +1,15 @@
+.rag-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.question-field {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.error {
+  color: #d32f2f;
+  margin-top: 16px;
+}

@@ -15,7 +15,7 @@ export class DocumentService {
 
   private http = inject(HttpClient);
 
-  private readonly apiUrl = 'https://localhost:7001/api/documents';
+  private readonly apiUrl = 'https://localhost:44348/api/documents';
 
   upload(file: File): Observable<DocumentUploadResponse> {
 
